@@ -31,7 +31,18 @@ public class MainActivity extends ActionBarActivity {
 
     public void buttonMethod(View b){ //全てのonClickをbuttonMethodにしておく。この中に処理を書く。
 
+        /*
+         * ボタンをおした時の
+         * public void ~~~(View v){}
+         * のvの部分は実は押したView自体を表すものなので、
+         * それをボタンの形に強制的に変換している(キャストと呼ばれます)
+         */
         Button button = (Button)b;
+
+        /*
+         * button.getText() でボタンに書いてある文字を取得している
+         * .toString() はその文字をString型(つまり文字列)に変換している
+         */
         String s = button.getText().toString();      //入力値を取得する。sとして取得。ここよくわかんない！
 
         text1 = (TextView)findViewById(R.id.text1);
@@ -40,7 +51,17 @@ public class MainActivity extends ActionBarActivity {
         //状態分岐。A入力中
         if(state == 0){
             //イベント分岐。数値ボタンが押された時。
+            /*
+             * ここ、イベント分岐をわざわざチェックさせるくらいならボタンをおした時に
+             * 動く命令自体を分ければいいと思います。
+             */
             if(chkEvent(s)==0){
+                /*
+                 * inputStrという文字列に、今押されたボタンの文字を追加してる
+                 * たとえば、"2"のボタンを押していたとしたら
+                 * inputStr = "123" + "2"
+                 * みたいな感じになる
+                 */
                 inputStr += s;                      //ここがよくわからない！！
                 text1.setText(inputStr);
                 state=0;
